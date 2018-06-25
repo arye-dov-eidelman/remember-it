@@ -1,4 +1,18 @@
-# Admin Panel
+# Remember it
+
+## User
+
+- ### attributes
+
+  - firs_tname        string
+  - last_name         string
+  - email             string
+  - password(_digest) string
+
+- ### asocciations
+
+  has_many :learning_tracks, through: :learning_tracks source: :tracks
+  has_many :curriculum_tracks, through: :curriculum_tracks, source: :tracks
 
 ## Question
 
