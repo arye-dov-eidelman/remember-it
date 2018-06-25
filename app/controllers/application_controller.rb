@@ -7,8 +7,8 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  get "/env" do
-    erb :env
+  get "/" do
+    'home page'
   end
 
 end
