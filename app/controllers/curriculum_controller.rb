@@ -21,4 +21,3 @@ class CurriculumController < ApplicationController
   end
 
 end
-  
