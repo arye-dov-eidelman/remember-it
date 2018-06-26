@@ -19,5 +19,11 @@ class LearnController < ApplicationController
   get "/l/:track/:chapter/:quiz/:question" do
     'question'
   end
+  
+  ## redirects ##
+
+  get "/learn/*" do
+    redirect "/l/#{params[:splat]}"    
+  end
 
 end

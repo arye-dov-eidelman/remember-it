@@ -5,9 +5,12 @@ def app
 end
 
 describe UserController do
-  it "/signup redirects to the login page" do
+  it "/signup redirects to the signup page" do
     get '/signup'
     expect(last_response.status).to eq(302)
+    follow_redirect!
+    # binding.pry
+    # expect(last_response.location).to include("account")
     expect(last_response.body).to include("Sign Up")
   end
   
@@ -19,6 +22,11 @@ describe UserController do
     expect(last_response.body).to include("Last Name")
     expect(last_response.body).to include("Email")
     expect(last_response.body).to include("Password")
-    expect(last_response.body).to include("First Name")
+    expect(last_response.body).to include("submit")
   end
+
+  # it "account/signup displays the login page" do
+  #   get '/account/signup'
+  #   fill_in :first_name with 'mendy'
+  # end
 end

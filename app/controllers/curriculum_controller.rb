@@ -1,7 +1,7 @@
 class CurriculumController < ApplicationController
 
   get "/c" do
-    'Curriculum'
+    erb :'Curriculum/index'
   end
 
   get "/c/:track" do
@@ -18,6 +18,12 @@ class CurriculumController < ApplicationController
 
   get "/c/:track/:chapter/:quiz/:question" do
     'Curriculum question'
+  end
+
+  ## redirects ##
+
+  get "/curriculum/*" do
+    redirect "/c/#{params[:splat]}"    
   end
 
 end
