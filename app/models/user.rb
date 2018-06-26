@@ -6,5 +6,9 @@ class User < ActiveRecord::Base
   validates :password,  presence: true
 
   has_many :learning_tracks, through: :learning_tracks, source: :tracks,  class_name: "Track"
-  has_many :curriculum_tracks, through: :curriculum_tracks, source: :tracks, class_name: "Track"  
+  has_many :curriculum_tracks, through: :curriculum_tracks, source: :tracks, class_name: "Track"
+
+  def full_name
+    self.first_name.capitalize + ' ' + self.last_name.capitalize
+  end
 end

@@ -13,12 +13,24 @@
 <body>
   <div class="wrapper">
     <header>
-    <h1>Remember it</h1>
-    <nav>
-      <a href="/account/login">login</a> <a href="/account/signup">sign up</a>  
-    </nav>
-    <br><br>
+      <h1>Remember it</h1>
+      <nav>
+        <% if @logged_in %>
+          <a href="/account"><%= @user.first_name %></a>
+          <a href="/account/logout">Log out</a>
+        <% else %>
+          <a href="/account/signup">Sign up</a>
+          <a href="/account/login">Log in</a>
+        <% end %>
+      </nav>
+      <br><br>
     </header>
+    <div class="messages">
+      <% binding.pry %>
+      <% @messages.each do |message| %>
+        <div class="message message-<%= message.intent %>"><%= message.content %></div>
+      <% end %>
+    </div>
 
     <%= yield %>
 
