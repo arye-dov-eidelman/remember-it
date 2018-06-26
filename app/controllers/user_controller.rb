@@ -9,7 +9,7 @@ class UserController < ApplicationController
     user = User.new(params)
     if user.save
       session[:user_id] = user.id
-      create_message("welcome #{user.name}", "great")
+      create_message("welcome #{user.full_name}", "great")
       binding.pry
       redirect session[:sign_up_referrer]
 
