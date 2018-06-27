@@ -9,8 +9,7 @@ class UserController < ApplicationController
     user = User.new(params)
     if user.save
       session[:user_id] = user.id
-      create_message("welcome #{user.full_name}", "great")
-      binding.pry
+      create_message("welcome #{user.full_name}", "successful")
       redirect session[:sign_up_referrer]
 
     elsif User.find_by(email: params[:email])
@@ -18,10 +17,9 @@ class UserController < ApplicationController
       redirect "/account/login"
     else
       
-      create_message("That's odd. We couldn't create your account.", "error")
+      create_message("That's odd. We couldn't create your account.", "failure")
       redirect "/account/signup"
     end
-    binding.pry
   end
   
   get "/account/login" do

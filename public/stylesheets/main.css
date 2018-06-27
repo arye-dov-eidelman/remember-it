@@ -1,0 +1,24 @@
+.message-successful {
+  background-color: lightgreen;
+  border: 5px solid green;
+}
+
+.message, .message-info {
+  background-color: #eee;
+  border: 5px solid #ccc;
+}
+
+.message-notice {
+  background-color: lightyellow;
+  border: 5px solid yellow;
+}
+
+.message-warning {
+  background-color: yellow;
+  border: 5px solid orange;
+}
+
+.message-failer {
+  background-color: pink;
+  border: 5px solid red;
+}

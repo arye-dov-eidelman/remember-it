@@ -26,9 +26,9 @@
       <br><br>
     </header>
     <div class="messages">
-      <% binding.pry %>
-      <% @messages.each do |message| %>
-        <div class="message message-<%= message.intent %>"><%= message.content %></div>
+      <%# binding.pry %>
+      <% recieve_messages.each do |message| %>
+        <div class="message message-<%= message[:intent] %>"><%= message[:content] %></div>
       <% end %>
     </div>
 

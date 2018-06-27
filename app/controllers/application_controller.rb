@@ -30,15 +30,6 @@ class ApplicationController < Sinatra::Base
     # end
   end
 
-  after do
-    if request.get?
-      send_and_delete_any_messages
-    # elsif request.post?
-    # elsif request.patch?
-    # elsif request.delete?
-    end
-  end
-
   get "/" do
     erb :index
   end
