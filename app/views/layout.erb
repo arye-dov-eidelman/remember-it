@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-  <title>Remember It</title>
+  <title><%= @title + ' - ' if @title %>Remember It</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -26,7 +26,6 @@
       <br><br>
     </header>
     <div class="messages">
-      <%# binding.pry %>
       <% recieve_messages.each do |message| %>
         <div class="message message-<%= message[:intent] %>"><%= message[:content] %></div>
       <% end %>
