@@ -5,13 +5,16 @@ def app
 end
 
 describe ApplicationController do
-  it "displays the home page when logged out" do
-    get '/'
-    expect(last_response.status).to eq(200)
-    expect(last_response.body).to include("Remember it")
-    expect(last_response.body).to include("/l")
-    expect(last_response.body).to include("/c")
-    expect(last_response.body).to include("/account/login")
-    expect(last_response.body).to include("/account/signup")
+
+  it "server is running" do
+    visit '/'
+    expect(page.status_code).to eq(200)
+    expect(page.body).to include("Remember it")
+  end
+
+  it "displays the home page" do
+    visit '/'
+    expect(page).to have_link("/learn")
+    expect(page).to have_link("/curriculum")
   end
 end
