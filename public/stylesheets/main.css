@@ -4,8 +4,8 @@
 }
 
 .message, .message-info {
-  background-color: #eee;
-  border: 5px solid #ccc;
+  background-color: lightgray;
+  border: 5px solid grey;
 }
 
 .message-notice {

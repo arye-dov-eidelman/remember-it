@@ -14,7 +14,7 @@ describe UserController do
     expect(last_response.body).to include("Sign Up")
   end
   
-  it "account/signup displays the login page" do
+  it "account/signup displays the sign up page" do
     get '/account/signup'
     expect(last_response.status).to eq(200)
     expect(last_response.body).to include("Sign Up")
