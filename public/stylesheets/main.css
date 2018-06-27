@@ -14,11 +14,26 @@
 }
 
 .message-warning {
-  background-color: yellow;
+  background-color: peachpuff;
   border: 5px solid orange;
 }
 
 .message-failer {
   background-color: pink;
   border: 5px solid red;
+}
+
+.brand-quate-line1 {
+  font-size: 0.716em;
+}
+
+.brand-quate-line2 {
+  font-size: 1em;
+}
+blockquote{
+  text-transform: capitalize;
+  font-size: 5em;
+  background: lightgray;
+  padding: 10px;
+  margin: 50px;
 }
