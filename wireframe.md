@@ -1,3 +1,5 @@
+> > > # Notice: This file is deprecated in favor of remember_it_uml_diagram.html
+
 # Remember it
 
 ## User
