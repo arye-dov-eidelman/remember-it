@@ -3,7 +3,7 @@
   border: 5px solid green;
 }
 
-.message, .message-info {
+.message-info {
   background-color: lightgray;
   border: 5px solid grey;
 }
@@ -24,15 +24,17 @@
 }
 
 .brand-quate-line1 {
-  font-size: 0.716em;
+  font-size: 0.94em;
+  text-transform: capitalize;
 }
 
 .brand-quate-line2 {
   font-size: 1em;
+  text-transform: uppercase;
 }
 blockquote{
-  text-transform: capitalize;
-  font-size: 5em;
+  width: fit-content;
+  font-size: 2em;
   background: lightgray;
   padding: 10px;
   margin: 50px;

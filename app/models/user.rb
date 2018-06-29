@@ -9,6 +9,14 @@ class User < ActiveRecord::Base
   has_many :curriculum_tracks, through: :curriculum_tracks, source: :tracks, class_name: "Track"
 
   def full_name
-    self.first_name.capitalize + ' ' + self.last_name.capitalize
+    self.first_name + ' ' + self.last_name
+  end
+
+  def first_name
+    self[:first_name].split(' ').collect{|name| name.capitalize}.join(' ')
+  end
+
+  def last_name
+    self[:last_name].split(' ').collect{|name| name.capitalize}.join(' ')
   end
 end
