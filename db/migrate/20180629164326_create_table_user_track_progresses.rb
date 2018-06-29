@@ -1,6 +1,6 @@
-class CreateTableUserTrackProgress < ActiveRecord::Migration
+class CreateTableUserTrackProgresses < ActiveRecord::Migration
   def change
-    create_table :User_track_progress do |t|
+    create_table :user_track_progresses do |t|
       t.integer :user_id
       t.integer :track_id
       t.integer :last_comleted_chapter_id

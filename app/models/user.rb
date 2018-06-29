@@ -1,12 +1,14 @@
 class User < ActiveRecord::Base
   has_secure_password
+
   validates :first_name,  presence: true
   validates :last_name,  presence: true
   validates :email,     presence: true, uniqueness: true
   validates :password,  presence: true
 
-  has_many :learning_tracks, through: :learning_tracks, source: :tracks,  class_name: "Track"
-  has_many :curriculum_tracks, through: :curriculum_tracks, source: :tracks, class_name: "Track"
+  has_many :user_track_progresses
+  has_many :learning_tracks, through: :user_track_progresses, foreign_key: "track_id", source: :track # not working
+  has_many :owned_tracks, class_name: "Track", foreign_key: "owner_id"
 
   def full_name
     self.first_name + ' ' + self.last_name

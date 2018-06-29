@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20180629164326) do
 
-  create_table "User_track_progress", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "track_id"
-    t.integer  "last_comleted_chapter_id"
-    t.integer  "last_comleted_quiz_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
     t.string   "content"
@@ -60,6 +51,15 @@ ActiveRecord::Schema.define(version: 20180629164326) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_track_progresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "track_id"
+    t.integer  "last_comleted_chapter_id"
+    t.integer  "last_comleted_quiz_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|
