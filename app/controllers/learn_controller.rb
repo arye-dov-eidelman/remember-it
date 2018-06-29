@@ -1,29 +1,25 @@
 class LearnController < ApplicationController
 
-  get "/l" do
+  get "/learn" do
     'tracks'
   end
 
-  get "/l/:track" do
+  get "/learn/:track" do
     'track'
   end
 
-  get "/l/:track/:chapter" do
+  get "/learn/:track/:chapter" do
     'chapter'
   end
 
-  get "/l/:track/:chapter/:quiz" do
+  get "/learn/:track/:chapter/:quiz" do
     'quiz'
-  end
-
-  get "/l/:track/:chapter/:quiz/:question" do
-    'question'
   end
   
   ## redirects ##
 
-  get "/learn/*" do
-    redirect "/l/#{params[:splat]}"    
+  get "/l/*" do
+    redirect "/learn/#{params[:splat]}"    
   end
 
 end
