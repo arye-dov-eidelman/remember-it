@@ -79,10 +79,9 @@ describe UserController do
       fill_in "Email:", with: @john.email
       fill_in "Password", with: @john.password
       click_button "Log In"
-      saved_user = User.find_by(email: @john.email)
       
       expect(page).to have_text("Welcome #{@john.full_name}")
-      expect(page).to have_link("#{@john.first_name.capitalize}")
+      expect(page).to have_link("#{@john.first_name}")
     end
   end
 
@@ -90,16 +89,21 @@ describe UserController do
     
     before do
       @john = User.create(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
+      # login do
+        visit '/account/login'
+        fill_in "Email:", with: @john.email
+        fill_in "Password", with: @john.password
+        click_button "Log In"
+      # end
     end
 
-    # it "logs the user out" do
+    it "logs the user out" do
       
-    #   visit '/account'
-    #   expect(page.body).to include(john.first_name)
-      
-    #   click_link 'logout'
-    #   expect(page.body).not_to include(john.first_name)
-    #   expect(page.body).to include('Login')
-    # end
+      visit '/'
+      click_link 'Log out'
+      expect(page).not_to have_text(@john.first_name)
+      expect(page).to have_text("You've successfully logged out")
+      expect(page).to have_text('Log in')
+    end
   end
 end
