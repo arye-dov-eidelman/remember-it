@@ -11,7 +11,7 @@ describe UserController do
   describe "sign up" do
 
     before do
-      john = User.new(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
+      @john = User.new(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
     end
 
     it "/signup redirects to /account/signup" do
@@ -20,7 +20,7 @@ describe UserController do
     end
 
     
-    it "/account/signup displays the sign up page" do
+    it "Displays the sign up page" do
       visit '/account/signup'
       expect(page.status_code).to eq(200)
       expect(page).to have_title("Sign Up")
@@ -34,33 +34,62 @@ describe UserController do
       expect(page).to have_field("Password", type: "password")
       expect(page).to have_button("Sign Up", type: "submit")
     end
+
+    it "Can Sign up a user" do
+      visit '/account/signup'
+      fill_in "First Name:", with: @john.first_name
+      fill_in "Last Name:", with: @john.last_name
+      fill_in "Email:", with: @john.email
+      fill_in "Password", with: @john.password
+      click_button "Sign Up"
+      saved_user = User.find_by(email: @john.email)
+
+      expect(page).to have_text("Welcome #{@john.full_name}")
+      expect(saved_user.first_name).to eq(@john.first_name)
+      expect(saved_user.last_name).to eq(@john.last_name)
+      expect(saved_user.email).to eq(@john.email)
+    end
   end
   
   describe "login" do
     
     before do
-      john = User.create(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
+      @john = User.create(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
     end
     
-    # it "account/signup displays the login page" do
-    #   visit '/account/signup'
-    #   fill_in :first_name :with => john.first_name
-    # end
+    it "/login redirects to /account/login" do
+      visit '/login'
+      expect(page).to have_current_path('/account/login')
+    end
 
-    # it "Welcomes the user when logged in" do
-    #   visit '/account/login'
-    #   fill_in :email, :with => john.email
-    #   fill_in :password, :with => 'password'
-    #   click_button 'submit'
-  
-    #   expect(page.body).to include('welcome John')
-    # end
+    
+    it "Displays the log in page" do
+      visit '/account/login'
+      expect(page.status_code).to eq(200)
+      expect(page).to have_title("Log In")
+      expect(page).to have_text("Email")
+      expect(page).to have_field("Email", type: "email")
+      expect(page).to have_text("Password")
+      expect(page).to have_field("Password", type: "password")
+      expect(page).to have_button("Log In", type: "submit")
+    end
+
+    it "Can log in a user" do
+      visit '/account/login'
+      fill_in "Email:", with: @john.email
+      fill_in "Password", with: @john.password
+      click_button "Log In"
+      saved_user = User.find_by(email: @john.email)
+      
+      expect(page).to have_text("Welcome #{@john.full_name}")
+      expect(page).to have_link("#{@john.first_name.capitalize}")
+    end
   end
 
   describe "logout" do
     
     before do
-      john = User.create(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
+      @john = User.create(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
     end
 
     # it "logs the user out" do
