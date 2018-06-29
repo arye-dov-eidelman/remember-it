@@ -1,3 +1,9 @@
+.message {
+  padding: 10px 25px;
+  margin: 0 auto;
+  width: fit-content;
+}
+
 .message-successful {
   background-color: lightgreen;
   border: 5px solid green;
@@ -18,7 +24,7 @@
   border: 5px solid orange;
 }
 
-.message-failer {
+.message-failure {
   background-color: pink;
   border: 5px solid red;
 }
@@ -38,4 +44,14 @@ blockquote{
   background: lightgray;
   padding: 10px;
   margin: 50px;
+}
+
+body {
+  margin: 0 auto;
+  width: fit-content;
+  padding: 8px;
+}
+main {
+  margin: 0 auto;
+  width: fit-content;
 }

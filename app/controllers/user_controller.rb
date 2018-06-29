@@ -14,7 +14,7 @@ class UserController < ApplicationController
       redirect session[:sign_up_referrer]
 
     elsif User.find_by(email: params[:email])
-      create_message("you already have an account. If you forgot your password, you can request a password reset. (perhaps sometime in the future this will actually work.)", "notice")
+      create_message("You already have an account. If you forgot your password, you can request a password reset. (perhaps sometime in the future this will actually work.)", "notice")
       redirect "/account/login"
 
     else
@@ -37,9 +37,12 @@ class UserController < ApplicationController
         redirect session[:sign_up_referrer]
 
       else
-        create_message("thats not your password, try again.", "failure")
+        create_message("Thats not your password, try again.", "failure")
         redirect "/account/login"
       end
+    else
+      create_message("This account does not exist! enter the correct email or sign up.", "failure")
+      redirect "/account/login"
     end
   end
 

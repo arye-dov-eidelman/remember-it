@@ -30,8 +30,9 @@
         <div class="message message-<%= message[:intent] %>"><%= message[:content] %></div>
       <% end %>
     </div>
-
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
 
     <footer class="branding">
       <br><br>
