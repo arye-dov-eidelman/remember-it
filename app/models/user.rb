@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :email,     presence: true, uniqueness: true
   validates :password,  presence: true
 
+  # To Do: rename user_track_progress to learning_track_progress
   has_many :user_track_progresses
   has_many :learning_tracks, through: :user_track_progresses, foreign_key: "track_id", source: :track # not working
   has_many :owned_tracks, class_name: "Track", foreign_key: "owner_id"

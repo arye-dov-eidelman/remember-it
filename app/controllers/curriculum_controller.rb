@@ -1,7 +1,12 @@
 class CurriculumController < ApplicationController
 
+  before do
+    (@user = User.find_by(id: session[:user_id])) || (redirect '/account/login')
+  end
+
   get "/curriculum" do
-    erb :'Curriculum/index'
+    @title = "Curriculum"
+    erb :'curriculum/index'
   end
 
   get "/curriculum/:track" do
