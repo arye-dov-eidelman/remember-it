@@ -48,7 +48,8 @@ blockquote{
 
 body {
   margin: 0 auto;
-  width: fit-content;
+  min-width: 360px;
+  max-width: 1024px;
   padding: 8px;
 }
 main {

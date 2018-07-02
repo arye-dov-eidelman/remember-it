@@ -3,6 +3,7 @@ class CreateTableTracks < ActiveRecord::Migration
     create_table :tracks do |t|
       t.integer :owner_id
       t.string :title
+      t.string :subtitle
 
       t.timestamps null: false
     end

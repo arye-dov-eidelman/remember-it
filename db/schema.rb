@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180629164326) do
   create_table "tracks", force: :cascade do |t|
     t.integer  "owner_id"
     t.string   "title"
+    t.string   "subtitle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,16 +1,12 @@
 <h2>Your Learning tracks</h2>
 <% if @user.owned_tracks.empty? %>
-  <p>
-    You haven't created any Learning tracks yet.
-    <a href="/curriculum/track/new">Create a new Learning track</a>
-  </p>
+  <p>You haven't created any Learning tracks yet.</p>
 <% else %>
   <% @user.owned_tracks.each do |track| %>
-    <div class="">
+    <a href="/tracks/<%= track.id %>/edit">
       <h3><%= track.title %></h3>
       <p><%= track.subtitile %></p>
-    </div>
+    </a>
   <% end %>
-  <a href="/curriculum/track/new">Create a new Learning track</a>
 <% end %>
-
+<p><a href="/tracks/new">Create a new Learning track</a></p>
