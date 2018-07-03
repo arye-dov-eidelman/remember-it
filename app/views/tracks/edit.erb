@@ -1,0 +1,27 @@
+<h2>Track Editer</h2>
+<form action="/tracks/<%= @track.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+  <label>Title: <input type="text" name="track[title]" id="track_title" value="<%= @track.title %>"></label>
+  <label>Description: <input type="text" name="track[description]" id="track_description" value="<%= @track.description %>"></label>
+  <h3>Chapters:</h3>
+  <p>You can always add, edit or remove chapters later. Blank chapters titles will ignored.</p>
+  <!--p>Chapters can be reorganized by changing the number field. inserting duplicate numbers, will cause all numbers to be ignored</p-->
+  <ol>
+    <% @track.chapters.each do |chapter| %>
+      <li>
+        <!--label>Number: <input type="number" name="chapters[<%= chapter.id %>][sort_key]" value="<%= chapter.sort_key %>"></label-->
+        <label>Title: <input type="text" name="chapters[<%= chapter.id %>][title]" value="<%= chapter.title %>"></label>
+      </li>
+    <% end %>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
+  </ol>
+
+  <input type="submit" value="Save all changes">
+</form>

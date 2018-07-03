@@ -1,0 +1,19 @@
+<h2>Create a new Learning Track</h2>
+<form action="/tracks" method="post">
+  <label>Title: <input type="text" name="track[title]" id="track_title"></label>
+  <label>Description: <input type="text" name="track[description]" id="track_description"></label>
+  <h3>Chapters:</h3>
+  <p>You can always add, edit or remove chapters later. Blank chapters titles will ignored.</p>
+  <ol>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+    <li><label>Title: <input type="text" name="chapters[][title]"></label></li>
+  </ol>
+
+  <input type="submit" value="Create track (you can continue editing it later)">
+</form>

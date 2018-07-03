@@ -1,44 +1,76 @@
-.message {
-  padding: 10px 25px;
-  margin: 0 auto;
-  width: fit-content;
-}
 
-.message-successful {
-  background-color: lightgreen;
-  border: 5px solid green;
-}
+/* ##### general (start) ##### */
 
-.message-info {
-  background-color: lightgray;
-  border: 5px solid grey;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-.message-notice {
-  background-color: lightyellow;
-  border: 5px solid yellow;
-}
+  body {
+    margin: 0 auto;
+    min-width: 360px;
+    max-width: 1024px;
+    background-color: #eee
+  }
+  main {
+    margin: 0 auto;
+    width: fit-content;
+    overflow: auto;
+    padding: 8px;
+  }
 
-.message-warning {
-  background-color: peachpuff;
-  border: 5px solid orange;
-}
+  header, footer{
+    font-family: 'Indie Flower', cursive;
+    text-shadow: 0px 0px 20px black;
+    color: white;
+    padding: 20px;
+    margin: 0;
+    background-color: #444;
+  }
 
-.message-failure {
-  background-color: pink;
-  border: 5px solid red;
-}
+  h1{  
+    display: inline-block;
+    margin: 0 50px 0 0;
+  }
 
+  nav{  
+    display: inline-block;
+  }
+
+  .card{
+    padding: 15px;
+    margin: 5px;
+    text-shadow: 0px 0px 20px black;
+    color: white;
+    background-color: #444;
+  }
+
+  /* set all links in the header footer and cards to tomato (#ff6347) */
+  header a:link, header a:visited, footer a:link, footer a:visited, .card a:link, .card a:visited {
+    color: #ff6347;
+  }
+
+  /* set all other links */
+  /* a:link, a:visited {
+    color: #ff6347;
+  } */
+
+/* ##### general (end) ##### */
+
+
+/* ##### .brand-quote (start) ##### */
 .brand-quote-line1 {
-  font-size: 0.94em;
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.7576em;
   text-transform: capitalize;
 }
 
 .brand-quote-line2 {
+  font-family: 'Indie Flower', cursive;
   font-size: 1em;
   text-transform: uppercase;
+  font-weight: 600;
 }
-blockquote{
+.brand-quote{
   width: fit-content;
   font-size: 2em;
   background: lightgray;
@@ -46,13 +78,64 @@ blockquote{
   margin: 50px;
 }
 
-body {
-  margin: 0 auto;
-  min-width: 360px;
-  max-width: 1024px;
-  padding: 8px;
-}
-main {
-  margin: 0 auto;
-  width: fit-content;
-}
+/* ##### .brand-quote (end) ##### */
+
+/* ##### messages (start) ##### */
+
+  .message {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 10px 25px;
+    margin: 0 auto;
+    width: fit-content;
+
+    text-shadow: 0px 0px 20px white;
+    box-shadow: 0 0 50px 10px black;
+    background-color: lightgray;
+
+    animation:message-anima 2s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 8s;
+  }
+
+  @keyframes message-anima{
+    from {opacity :1;}
+    to {opacity :0;}
+  }
+
+  .message-successful {
+    /* background-color: lightgreen; */
+    /* border: 5px solid green; */
+    
+    color: green;
+  }
+
+  .message-info {
+    /* background-color: lightgray; */
+    /* border: 5px solid grey; */
+    color: black;
+  }
+
+  .message-notice {
+    /* background-color: lightyellow; */
+    /* border: 5px solid yellow; */
+
+    color: rgb(163, 163, 0);
+  }
+
+  .message-warning {
+    /* background-color: peachpuff; */
+    /* border: 5px solid orange; */
+    color: darkorange;
+  }
+
+  .message-failure {
+    /* background-color: pink; */
+    /* border: 5px solid red; */
+
+    color: darkred;
+  }
+
+/* ##### messages (end) ##### */

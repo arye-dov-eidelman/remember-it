@@ -3,10 +3,13 @@
   <p>You haven't created any Learning tracks yet.</p>
 <% else %>
   <% @user.owned_tracks.each do |track| %>
-    <a href="/tracks/<%= track.id %>/edit">
+    <div class="card">
       <h3><%= track.title %></h3>
-      <p><%= track.subtitile %></p>
-    </a>
+      <p><%= track.description %></p>
+      <p><%= track.chapters.count %> Chapters, <%= track.quizzes.count %> quizzes, <%= track.questions.count %> Quiestions.</p>
+      <a href="/tracks/<%= track.id %>">View</a>
+      <a href="/tracks/<%= track.id %>/edit">Edit</a>
+    </div>
   <% end %>
 <% end %>
 <p><a href="/tracks/new">Create a new Learning track</a></p>
