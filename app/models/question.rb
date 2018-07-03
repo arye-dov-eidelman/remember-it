@@ -1,7 +1,16 @@
 class Question < ActiveRecord::Base
-  # validates :title,  presence: true
-  # belolgs_to :owner, presence: true, source: :users
-  # has_many :chapters
-  # has_many :users, through: :proggresses
   
+  validates :title,  presence: true
+  validates :is_correct,  presence: true
+
+  belongs_to :quiz
+  has_one :chapter, through: :quiz
+
+  has_one :quiz, through: :question
+  has_one :chapter, through: :quiz
+  has_one :track, through: :chapter
+  has_one :owner, through: :track
+
+  has_many :answer
+
 end
