@@ -1,27 +1,42 @@
 <h2>Track Editer</h2>
 <form action="/tracks/<%= @track.id %>" method="post">
 <input type="hidden" name="_method" value="patch">
-  <label>Title: <input type="text" name="track[title]" id="track_title" value="<%= @track.title %>"></label>
-  <label>Description: <input type="text" name="track[description]" id="track_description" value="<%= @track.description %>"></label>
-  <h3>Chapters:</h3>
-  <p>You can always add, edit or remove chapters later. Blank chapters titles will ignored.</p>
-  <!--p>Chapters can be reorganized by changing the number field. inserting duplicate numbers, will cause all numbers to be ignored</p-->
-  <ol>
-    <% @track.chapters.each do |chapter| %>
-      <li>
-        <!--label>Number: <input type="number" name="chapters[<%= chapter.id %>][sort_key]" value="<%= chapter.sort_key %>"></label-->
-        <label>Title: <input type="text" name="chapters[<%= chapter.id %>][title]" value="<%= chapter.title %>"></label>
-      </li>
-    <% end %>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-    <li><!--label>Number: <input type="number" name="new_chapters[][sort_key]"></label> <label-->Title: <input type="text" name="new_chapters[][title]"></label></li>
-  </ol>
 
-  <input type="submit" value="Save all changes">
+  <div class="card">
+    <label>Title: <br>
+      <textarea name="track[title]" id="track_title" cols="30" rows="3" required><%= @track.title %></textarea>
+    </label>
+  </div>
+
+  <div class="card">
+    <label>Description: <br>
+      <textarea name="track[description]" id="track_description" cols="30" rows="10"><%= @track.description %></textarea>
+    </label>
+  </div>
+
+  <h3>Chapters:</h3>
+    <% @track.chapters.each.with_index(1) do |chapter, i| %>
+
+      <div class="card">
+        <span class="breakable">Chapter <%= i %>.</span>
+        <label class="breakable">Title:
+          <input  type="text" class="chapter-title delete-if-empty" name="chapters[<%= chapter.id %>][title]"
+                  value="<%= chapter.title %>" placeholder="Leave blank to delete with all of it's quizzes!">
+        </label>
+        <span class="breakable">Contains <%= chapter.quizzes.count %> quizzes. <a class="button-breakable" href="/chapters/<%= chapter.id %>/edit">edit</a></span>
+      </div>
+
+    <% end %>
+    
+  <h3>New Chapters:</h3>
+    <% 8.times.with_index(@track.chapters.length + 1) do |x, count| %>
+
+      <div class="card">
+        <span class="breakable">Chapter <%= count %>.</span>
+        <label class="breakable">Title: <input type="text" class="chapter-title" name="new_chapters[][title]" placeholder="will not be added if blank"></label>
+      </div>
+
+    <% end %>
+
+  <input type="submit" class="button" value="Save all changes">
 </form>

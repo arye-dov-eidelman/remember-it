@@ -7,9 +7,9 @@
 
   body {
     margin: 0 auto;
-    min-width: 360px;
+    /* min-width: 360px; */
     max-width: 1024px;
-    background-color: #eee
+    background-color: #bbb;
   }
   main {
     margin: 0 auto;
@@ -27,115 +27,154 @@
     background-color: #444;
   }
 
-  h1{  
+  header * {
     display: inline-block;
+  }
+
+  header h1, header h3{
     margin: 0 50px 0 0;
   }
 
-  nav{  
-    display: inline-block;
+  form .card input, form .card textarea{
+    background: #bbb;
+    border: none;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 5px;
   }
 
-  .card{
-    padding: 15px;
-    margin: 5px;
-    text-shadow: 0px 0px 20px black;
-    color: white;
-    background-color: #444;
+  input[type=text] {
+    border: none;
+    padding: 2px;
   }
-
-  /* set all links in the header footer and cards to tomato (#ff6347) */
-  header a:link, header a:visited, footer a:link, footer a:visited, .card a:link, .card a:visited {
+  
+  /* set all links in the header footer and buttons to tomato (#ff6347) */
+  header a:link, header a:visited, footer a:link, footer a:visited, .button, .button-breakable {
     color: #ff6347;
+    text-decoration: none;
   }
-
-  /* set all other links */
-  /* a:link, a:visited {
-    color: #ff6347;
-  } */
 
 /* ##### general (end) ##### */
 
+/* ##### class level styles (start) ##### */
 
-/* ##### .brand-quote (start) ##### */
-.brand-quote-line1 {
-  font-family: 'Indie Flower', cursive;
-  font-size: 0.7576em;
-  text-transform: capitalize;
-}
-
-.brand-quote-line2 {
-  font-family: 'Indie Flower', cursive;
-  font-size: 1em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-.brand-quote{
-  width: fit-content;
-  font-size: 2em;
-  background: lightgray;
-  padding: 10px;
-  margin: 50px;
-}
-
-/* ##### .brand-quote (end) ##### */
-
-/* ##### messages (start) ##### */
-
-  .message {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding: 10px 25px;
-    margin: 0 auto;
-    width: fit-content;
-
-    text-shadow: 0px 0px 20px white;
-    box-shadow: 0 0 50px 10px black;
-    background-color: lightgray;
-
-    animation:message-anima 2s 1;
-    animation-fill-mode: forwards;
-    animation-delay: 8s;
+  .card {
+    padding: 15px;
+    margin: 5px 0;
+    color: white;
+    background-color: #666;
+    /* border-bottom: 1px solid #444;
+    border-top: 1px solid #444; */
   }
 
-  @keyframes message-anima{
-    from {opacity :1;}
-    to {opacity :0;}
+  .breakable{
+    display: inline-block;
+  }
+  
+  .button{
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 15px;
+    margin: 5px 0;
+    text-shadow: 0px 0px 20px black;
+    color: #ff6347;
+    background-color: #444;
   }
 
-  .message-successful {
-    /* background-color: lightgreen; */
-    /* border: 5px solid green; */
+  .button-breakable{
+    display: inline-block;
+    border: none;
     
-    color: green;
+    padding: 10px;
+    margin: 0 5px;
+    text-shadow: 0px 0px 20px black;
+    color: #ff6347;
+    background-color: #444;
   }
 
-  .message-info {
-    /* background-color: lightgray; */
-    /* border: 5px solid grey; */
-    color: black;
+  /* ##### .brand-quote (start) ##### */
+
+    .brand-quote-line1 {
+      font-family: 'Indie Flower', cursive;
+      font-size: 0.7576em;
+      text-transform: capitalize;
+    }
+
+    .brand-quote-line2 {
+      font-family: 'Indie Flower', cursive;
+      font-size: 1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .brand-quote{
+      width: fit-content;
+      font-size: 2em;
+      background: lightgray;
+      padding: 10px;
+      margin: 50px;
+    }
+
+  /* ##### .brand-quote (end) ##### */
+
+  /* ##### messages (start) ##### */
+
+    .message {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding: 10px 25px;
+      margin: 0 auto;
+      width: fit-content;
+
+      text-shadow: 0px 0px 20px white;
+      box-shadow: 0 0 50px 10px black;
+      background-color: lightgray;
+
+      animation:message-animation 2s 1;
+      animation-fill-mode: forwards;
+      animation-delay: 8s;
+    }
+
+    @keyframes message-animation{
+      from {
+        opacity :1;
+        top: 0;
+      }
+      to {
+        opacity :0;
+        top: -150px;
+      }
+    }
+
+  /* ##### messages (end) ##### */
+
+
+  .chapter-title {
+    width: 300px;
   }
 
-  .message-notice {
-    /* background-color: lightyellow; */
-    /* border: 5px solid yellow; */
-
-    color: rgb(163, 163, 0);
+  .delete-if-empty:placeholder-shown {
+    background-color: red;
   }
 
-  .message-warning {
-    /* background-color: peachpuff; */
-    /* border: 5px solid orange; */
-    color: darkorange;
+  .delete-if-empty::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
   }
 
-  .message-failure {
-    /* background-color: pink; */
-    /* border: 5px solid red; */
-
-    color: darkred;
+  .delete-if-empty:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
   }
 
-/* ##### messages (end) ##### */
+  .delete-if-empty::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+  }
+
+/* ##### class level styles (end) ##### */
+
+/* ##### id level styles (end) ##### */
+/* ##### id level styles (end) ##### */

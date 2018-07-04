@@ -14,14 +14,16 @@
 <body>
   <div class="wrapper">
     <header>
-      <h1>Remember it</h1>
+      <a href="/"><h1>Remember&nbsp;it</h1></a>
       <nav>
+        <a href="/learn"><h3>Learn</h3></a>
+        <a href="/curriculum"><h3>Curriculum</h3></a>
         <% if @logged_in %>
-          <a href="/account"><%= @user.first_name %></a>
-          <a href="/account/logout">Log out</a>
+          <a href="/account"><h3><%= @user.first_name %></h3></a>
+          <a href="/account/logout"><h3>Log out</h3></a>
         <% else %>
-          <a href="/account/signup">Sign up</a>
-          <a href="/account/login">Log in</a>
+          <a href="/account/signup"><h3>Sign up</h3></a>
+          <a href="/account/login"><h3>Log in</h3></a>
         <% end %>
       </nav>
     </header>
