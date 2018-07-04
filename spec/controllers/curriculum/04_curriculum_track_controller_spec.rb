@@ -11,7 +11,7 @@ describe CurriculumTrackController do
     visit '/account/login'
     fill_in "Email:", with: @john.email
     fill_in "Password", with: @john.password
-    click_button "Log In"
+    click_button "Log in"
   end
 
   it "displays the new track page" do

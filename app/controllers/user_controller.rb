@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
   get "/account/signup" do
     session[:authenticate_referrer] = request.referrer
-    @title = "Sign Up"
+    @title = "Sign up"
     erb :'users/signup'
   end
 
@@ -25,7 +25,7 @@ class UserController < ApplicationController
   
   get "/account/login" do
     session[:authenticate_referrer] = request.referrer
-    @title = "Log In"
+    @title = "Log in"
     erb :'users/login'
   end
 

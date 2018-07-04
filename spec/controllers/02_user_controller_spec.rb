@@ -20,7 +20,7 @@ describe UserController do
     it "Displays the sign up page" do
       visit '/account/signup'
       expect(page.status_code).to eq(200)
-      expect(page).to have_title("Sign Up")
+      expect(page).to have_title("Sign up")
       expect(page).to have_text("First Name")
       expect(page).to have_field("First Name:")
       expect(page).to have_text("Last Name")
@@ -29,7 +29,7 @@ describe UserController do
       expect(page).to have_field("Email", type: "email")
       expect(page).to have_text("Password")
       expect(page).to have_field("Password", type: "password")
-      expect(page).to have_button("Sign Up", type: "submit")
+      expect(page).to have_button("Sign up", type: "submit")
     end
 
     it "Can Sign up a user" do
@@ -38,7 +38,7 @@ describe UserController do
       fill_in "Last Name:", with: @john.last_name
       fill_in "Email:", with: @john.email
       fill_in "Password", with: @john.password
-      click_button "Sign Up"
+      click_button "Sign up"
       saved_user = User.find_by(email: @john.email)
 
       expect(page).to have_text("Welcome #{@john.full_name}")
@@ -62,19 +62,19 @@ describe UserController do
     it "Displays the log in page" do
       visit '/account/login'
       expect(page.status_code).to eq(200)
-      expect(page).to have_title("Log In")
+      expect(page).to have_title("Log in")
       expect(page).to have_text("Email")
       expect(page).to have_field("Email", type: "email")
       expect(page).to have_text("Password")
       expect(page).to have_field("Password", type: "password")
-      expect(page).to have_button("Log In", type: "submit")
+      expect(page).to have_button("Log in", type: "submit")
     end
 
     it "Can log in a user" do
       visit '/account/login'
       fill_in "Email:", with: @john.email
       fill_in "Password", with: @john.password
-      click_button "Log In"
+      click_button "Log in"
 
       expect(page).to have_text("Welcome #{@john.full_name}")
       expect(page).to have_link("#{@john.first_name}")
@@ -89,16 +89,16 @@ describe UserController do
         visit '/account/login'
         fill_in "Email:", with: @john.email
         fill_in "Password", with: @john.password
-        click_button "Log In"
+        click_button "Log in"
       # end
     end
 
     it "logs the user out" do
       visit '/'
-      click_link 'Log Out'
+      click_link 'Log out'
       expect(page).not_to have_text(@john.first_name)
       expect(page).to have_text("You've successfully logged out")
-      expect(page).to have_text('Log In')
+      expect(page).to have_text('Log in')
     end
   end
 end
