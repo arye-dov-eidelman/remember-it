@@ -4,9 +4,7 @@ def app
   UserController
 end
 
-
 describe UserController do
-
 
   describe "sign up" do
 
@@ -19,7 +17,6 @@ describe UserController do
       expect(page).to have_current_path('/account/signup')
     end
 
-    
     it "Displays the sign up page" do
       visit '/account/signup'
       expect(page.status_code).to eq(200)
@@ -52,17 +49,16 @@ describe UserController do
   end
   
   describe "login" do
-    
+
     before do
       @john = User.create(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
     end
-    
+
     it "/login redirects to /account/login" do
       visit '/login'
       expect(page).to have_current_path('/account/login')
     end
 
-    
     it "Displays the log in page" do
       visit '/account/login'
       expect(page.status_code).to eq(200)
@@ -79,14 +75,14 @@ describe UserController do
       fill_in "Email:", with: @john.email
       fill_in "Password", with: @john.password
       click_button "Log In"
-      
+
       expect(page).to have_text("Welcome #{@john.full_name}")
       expect(page).to have_link("#{@john.first_name}")
     end
   end
 
   describe "logout" do
-    
+
     before do
       @john = User.create(first_name: 'john', last_name: 'smith', email: 'johnsmith@gmail.com', password: 'p@sSw0rd')
       # login do
@@ -98,12 +94,11 @@ describe UserController do
     end
 
     it "logs the user out" do
-      
       visit '/'
-      click_link 'Log out'
+      click_link 'Log Out'
       expect(page).not_to have_text(@john.first_name)
       expect(page).to have_text("You've successfully logged out")
-      expect(page).to have_text('Log in')
+      expect(page).to have_text('Log In')
     end
   end
 end
