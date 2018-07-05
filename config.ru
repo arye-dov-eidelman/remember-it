@@ -8,5 +8,6 @@ use Rack::MethodOverride
 use UserController
 use CurriculumController
 use CurriculumTrackController
+use CurriculumChapterController
 use LearnController
 run ApplicationController

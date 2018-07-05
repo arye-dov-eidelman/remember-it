@@ -1,0 +1,38 @@
+<h2>Track Editer</h2>
+<form action="/chapters/<%= @chapter.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+
+  <div class="card">
+    <label>Title: <br>
+      <textarea name="chapter[title]" id="chapter_title" cols="30" rows="3" required><%= @chapter.title %></textarea>
+    </label>
+  </div>
+
+<% if !@chapter.quizzes.empty? %>
+  <h3>Quizes:</h3>
+    <% @chapter.quizzes.each.with_index(1) do |quiz, i| %>
+
+      <div class="card">
+        <span class="breakable">Chapter <%= i %>.</span>
+        <label class="breakable">Title:
+          <input  type="text" class="quiz-title delete-if-empty" name="quizzes[<%= quiz.id %>][title]"
+                  value="<%= quiz.title %>" placeholder="Leave blank to delete with all of it's quiestions!">
+        </label>
+        <span class="breakable">Contains <%= quiz.questions.count %> questions. <a class="button-breakable" href="/quizzes/<%= quiz.id %>/edit">edit</a></span>
+      </div>
+
+    <% end %>
+<% end %>
+    
+  <h3>New Quizes:</h3>
+    <% 8.times.with_index(@chapter.quizzes.length + 1) do |x, count| %>
+
+      <div class="card">
+        <span class="breakable">Quiz <%= count %>.</span>
+        <label class="breakable">Title: <input type="text" class="quiz-title" name="new_quizzes[][title]" placeholder="will not be added if blank"></label>
+      </div>
+
+    <% end %>
+
+  <input type="submit" class="button" value="Save all changes">
+</form>
