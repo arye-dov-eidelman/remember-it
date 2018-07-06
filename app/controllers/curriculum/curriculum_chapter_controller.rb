@@ -1,11 +1,4 @@
-class CurriculumChapterController < ApplicationController
-
-  before do
-    if !(@user = User.find_by(id: session[:user_id]))
-      create_message("You need to be logged in to view that page.", "notice")
-      redirect '/account/login'
-    end
-  end
+class CurriculumChapterController < CurriculumController
 
   get "/chapters/:chapter_id/edit" do
     (return 404) if !(@chapter = Chapter.find_by(id: params[:chapter_id]))
@@ -20,11 +13,11 @@ class CurriculumChapterController < ApplicationController
     if params[:quizzes]
       params[:quizzes].each do |quiz_id, quiz_values|
         if !quiz_values[:title].strip.empty?
-          quiz = Quiz.find_by(id: chapter_id)
+          quiz = Quiz.find_by(id: quiz_id)
           quiz.title = quiz_values[:title].strip
           quiz.save
         else
-          quiz = Quiz.find_by(id: chapter_id)
+          quiz = Quiz.find_by(id: quiz_id)
           quiz.destroy
         end
       end

@@ -6,6 +6,8 @@ end
 
 use Rack::MethodOverride
 use UserController
+
+# this line can be removed without any affect as it's inherited in  all Curriculum Controllers
 use CurriculumController
 use CurriculumTrackController
 use CurriculumChapterController

@@ -1,11 +1,4 @@
-class CurriculumTrackController < ApplicationController
-
-  before do
-    if !(@user = User.find_by(id: session[:user_id]))
-      create_message("You need to be logged in to view that page.", "notice")
-      redirect '/account/login'
-    end
-  end
+class CurriculumTrackController < CurriculumController
 
   get "/tracks/new" do
     erb :'tracks/new'
@@ -39,7 +32,6 @@ class CurriculumTrackController < ApplicationController
     (return 404) if !(track = Track.find_by(id: params[:track_id]))
     (return 403) if track.owner != @user
 
-    # binding.pry
     if params[:chapters]
       params[:chapters].each do |chapter_id, chapter_values|
         if !chapter_values[:title].strip.empty?
@@ -67,13 +59,4 @@ class CurriculumTrackController < ApplicationController
       redirect "tracks/#{track.id}/edit"
     end
   end
-
-  # get "/curriculum/:track/:chapter" do
-  #   'Curriculum chapter'
-  # end
-
-  # get "/curriculum/:track/:chapter/:quiz" do
-  #   'Curriculum quiz'
-  # end
-
 end
