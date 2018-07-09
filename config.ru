@@ -11,5 +11,7 @@ use UserController
 use CurriculumController
 use CurriculumTrackController
 use CurriculumChapterController
+use CurriculumQuizController
 use LearnController
+
 run ApplicationController

@@ -1,7 +1,6 @@
 class Question < ActiveRecord::Base
   
   validates :title,  presence: true
-  validates :is_correct,  presence: true
 
   belongs_to :quiz
   has_one :chapter, through: :quiz
@@ -11,6 +10,6 @@ class Question < ActiveRecord::Base
   has_one :track, through: :chapter
   has_one :owner, through: :track
 
-  has_many :answer
+  has_many :answers
 
 end

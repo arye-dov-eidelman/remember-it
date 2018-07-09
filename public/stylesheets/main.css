@@ -14,6 +14,8 @@
   main {
     margin: 0 auto;
     width: fit-content;
+    max-width: 100%;
+    min-width: 50%;
     overflow: auto;
     padding: 8px;
   }
@@ -35,21 +37,22 @@
     margin: 0 50px 0 0;
   }
 
-  form .card input, form .card textarea{
+  /* form .card input, form .card textarea{
+    border: none;
+  } */
+  
+  input, textarea {
     background: #bbb;
     border: none;
+    padding: 2px;
+    margin:2px;
   }
+  
   
   textarea {
     width: 100%;
     padding: 5px;
   }
-
-  input[type=text] {
-    border: none;
-    padding: 2px;
-  }
-  
   /* set all links in the header footer and buttons to tomato (#ff6347) */
   header a:link, header a:visited, footer a:link, footer a:visited, .button, .button-breakable {
     color: #ff6347;
@@ -155,6 +158,20 @@
 
   .chapter-title {
     width: 300px;
+  }
+
+  .question-title {
+    display: block;
+    max-width: 1024px;
+    width: 100%;
+  }
+
+  .answer {
+    display: block;
+    min-width: 320px;
+    max-width: 1024px;
+    width: 95%;
+    margin-left: 5%;
   }
 
   .delete-if-empty:placeholder-shown {

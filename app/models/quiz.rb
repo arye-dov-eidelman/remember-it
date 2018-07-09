@@ -8,4 +8,18 @@ class Quiz < ActiveRecord::Base
   has_many :questions
 
 
+  after_commit :update_successful
+  after_rollback :update_failed
+ 
+  def update_successful
+    @successfully_updated = true
+  end
+
+  def update_failed
+    @successfully_updated = false
+  end
+
+  def successfully_updated?
+    @successfully_updated
+  end
 end

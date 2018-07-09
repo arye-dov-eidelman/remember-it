@@ -1,10 +1,11 @@
 class CurriculumController < ApplicationController
 
   before do
-    if !(@user = User.find_by(id: session[:user_id]))
+    if !@logged_in
       create_message("You need to be logged in to view that page.", "notice")
       redirect '/account/login'
     end
+    # create_message("CurriculumController before block ran", "notice")
   end
 
   get "/curriculum" do 
