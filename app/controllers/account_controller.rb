@@ -1,9 +1,9 @@
-class UserController < ApplicationController
+class AccountController < ApplicationController
 
   get "/account/signup" do
     session[:authenticate_referrer] = request.referrer
     @title = "Sign up"
-    erb :'users/signup'
+    erb :'account/signup'
   end
 
   post "/account/signup" do
@@ -26,7 +26,7 @@ class UserController < ApplicationController
   get "/account/login" do
     session[:authenticate_referrer] = request.referrer
     @title = "Log in"
-    erb :'users/login'
+    erb :'account/login'
   end
 
   post "/account/login" do
@@ -51,6 +51,23 @@ class UserController < ApplicationController
     create_message("You've successfully logged out.", "successful")
     redirect '/'
   end
+
+  get "/account/settings" do
+    erb :'/account/settings'
+  end
+
+  patch "/account" do
+    if @user.authenticate(params[:user][:password])
+      if !@user.update(params[:user])
+        create_message("We couldn't update your account", "failure")
+      else
+        create_message("You've successfully updated your account details", "successful")
+      end
+    else
+      create_message("Thats not your password, try again", "failure")
+    end
+    erb :'/account/settings'
+  end
   
 
   ### redirects ###
@@ -60,6 +77,10 @@ class UserController < ApplicationController
 
   get "/login" do
     redirect "account/login"
+  end
+
+  get "/account" do
+    redirect "account/settings"
   end
 
 end

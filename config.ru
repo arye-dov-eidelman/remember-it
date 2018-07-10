@@ -5,9 +5,9 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-use UserController
+use AccountController
 
-# this line can be removed without any affect as it's inherited in  all Curriculum Controllers
+# this line can be removed without any affect as it's inherited in all Curriculum Controllers
 use CurriculumController
 use CurriculumTrackController
 use CurriculumChapterController

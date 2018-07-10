@@ -183,15 +183,12 @@
     opacity: 1; /* Firefox */
   }
 
-  .delete-if-empty:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: white;
-  }
-
-  .delete-if-empty::-ms-input-placeholder { /* Microsoft Edge */
+  /* Internet Explorer 10-11 */ .delete-if-empty:-ms-input-placeholder,
+  /* Microsoft Edge */ .delete-if-empty::-ms-input-placeholder {
     color: white;
   }
 
 /* ##### class level styles (end) ##### */
 
-/* ##### id level styles (end) ##### */
+/* ##### id level styles (start) ##### */
 /* ##### id level styles (end) ##### */

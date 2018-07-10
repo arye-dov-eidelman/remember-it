@@ -1,0 +1,34 @@
+<form action="/account" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <h2>Account Settings</h2>
+
+  <div class="card">
+    <label for="first_name">First Name:
+      <input type="text" name="user[first_name]" value="<%= @user.first_name %>" required>
+    </label>
+  </div>
+
+  <div class="card">
+    <label for="last_name">Last Name:
+      <input type="text" name="user[last_name]" value="<%= @user.last_name %>" required>
+    </label>
+  </div>
+
+  <div class="card">
+    <label for="email">Email:
+      <input type="email" name="user[email]" value="<%= @user.email %>" required>
+    </label>
+  </div>
+
+  <div class="card">
+    <label for="password">Password:
+      <input type="password" name="user[password]" required>
+    </label>
+  </div>
+  
+  <input type="submit" class="button" value="Update">
+
+  <a class="button danger" href="account/delete">DELETE MY ACCOUNT</a>
+
+</form>
