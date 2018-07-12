@@ -2,13 +2,13 @@
 
 ## A tool for creating learning tracks with a focus on reviewing completed quizes until you actually remember it
 
-This is a tool for creating quizzes organized into chapters and tracks. these are designed to go along with a book
+This is a tool for creating quizzes organized into chapters and tracks. they are designed to go along with a book
 
 ## Features
 
 - [x] Public tracks ***v1***
 
-- Multiple question types
+- Question types
   - [x] Multiple choice ***v1***
   - [ ] Multi select - choose more than one answer (or zero) ***v2***
   - [ ] True or False ***v2***

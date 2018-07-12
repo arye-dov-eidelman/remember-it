@@ -1,10 +1,10 @@
 require_relative "../spec_helper"
 
 def app
-  UserController
+  AccountController
 end
 
-describe UserController do
+describe AccountController do
 
   describe "sign up" do
 
