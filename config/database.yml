@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 1
+  host: localhost
+development:
+  <<: *default
+  database: postgresql_database_development
+  username: postgres
+  password: password
+test:
+  <<: *default
+  database: postgresql_database_test
+  username: postgres
+  password: password
+production:
+  <<: *default
+  database: postgresql_database_production
+  username: windows_bash_test_application
+  password: <%= ENV['WINDOWS_BASH_TEST_APPLICATION_DATABASE_PASSWORD'] %>
