@@ -1,0 +1,15 @@
+<h2>Your Learning tracks</h2>
+<% if @user.owned_tracks.empty? %>
+  <p>You haven't created any Learning tracks yet.</p>
+<% else %>
+  <% @user.owned_tracks.each do |track| %>
+    <div class="card">
+      <h3><%= track.title %></h3>
+      <p><%= track.description %></p>
+      <p class="breakable"><%= track.chapters.count %> Chapters, <%= track.quizzes.count %> quizzes, <%= track.questions.count %> Questions.</p>
+      <a class="button-breakable" href="/tracks/<%= track.id %>">View</a>
+      <a class="button-breakable" href="/tracks/<%= track.id %>/edit">Edit</a>
+    </div>
+  <% end %>
+<% end %>
+<a class="button" href="/tracks/new">Create a New Learning Track</a>

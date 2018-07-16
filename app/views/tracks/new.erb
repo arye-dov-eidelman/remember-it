@@ -1,0 +1,26 @@
+<h2>Create a New Learning Track</h2>
+<form action="/tracks" method="post">
+
+  <div class="card">
+    <label>Title: <br>
+      <textarea name="track[title]" id="track_title" cols="30" rows="3" required></textarea>
+    </label>
+  </div>
+
+  <div class="card">
+    <label>Description: <br>
+      <textarea name="track[description]" id="track_description" cols="30" rows="10"></textarea>
+    </label>
+  </div>
+
+  <% 8.times.with_index(1) do |x, count| %>
+
+    <div class="card">
+      <span class="breakable">Chapter <%= count %>.</span>
+      <label class="breakable">Title: <input type="text" class="chapter-title" name="chapters[][title]" placeholder="Will not be added if blank"></label>
+    </div>
+
+  <% end %>
+
+  <input type="submit" class="button" value="Create track (you can continue editing it later)">
+</form>
