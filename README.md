@@ -4,6 +4,12 @@
 
 This is a tool for creating quizzes organized into chapters and tracks. they are designed to go along with a book
 
+I've created an app called 'remember it' to help Students remember what they've learned. I'm now going to explain a little how it works and give a demo. 
+
+A school would use the app to create quizzes with multiple choice questions, organized into learning tracks and chapters.
+
+The idea is that each quiz would also include a few questions From previous quizzes. That way you don't get to the end of the year and half the curriculum is forgotten.
+
 ## Features
 
 - [x] Public tracks ***v1***
@@ -47,11 +53,6 @@ Setup the database
 Start the server
 
     rackup config.ru
-
-## Usage
-
-navigate to domain/curriculum to create and manage your learning tracks
-navigate to domain/learn to find learning tracks
 
 ## Development
 
