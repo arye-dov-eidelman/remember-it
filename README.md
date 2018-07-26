@@ -42,7 +42,7 @@ Download and install
 
 Setup the database
 
-    rake db:migrate
+    rake db:schema:load
 
 Start the server
 
