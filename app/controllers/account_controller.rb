@@ -1,11 +1,16 @@
 class AccountController < ApplicationController
 
+  # sign up page
   get "/account/signup" do
+
+    # I dont think this works any more, but 'session[:authenticate_referrer]'
+    # should be used to redirect users to the page they were on after signing in
     session[:authenticate_referrer] = request.referrer
     @title = "Sign up"
     erb :'account/signup'
   end
-
+  
+  # create a new user or display the errors
   post "/account/signup" do
     user = User.new(params)
     if user.save
@@ -23,12 +28,14 @@ class AccountController < ApplicationController
     end
   end
   
+  # login page
   get "/account/login" do
     session[:authenticate_referrer] = request.referrer
     @title = "Log in"
     erb :'account/login'
   end
 
+  # login or display the errors
   post "/account/login" do
     if user = User.find_by(email: params[:email])
       if user.authenticate(params[:password])
@@ -52,10 +59,12 @@ class AccountController < ApplicationController
     redirect '/'
   end
 
+  # setting page used to change account details or delete the account
   get "/account/settings" do
     erb :'/account/settings'
   end
 
+  # update account details
   patch "/account" do
     if @user.authenticate(params[:user][:password])
       if !@user.update(params[:user])

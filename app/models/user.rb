@@ -15,10 +15,12 @@ class User < ActiveRecord::Base
     self.first_name + ' ' + self.last_name
   end
 
+  # properly capitlize the first name
   def first_name
     self[:first_name].split(' ').collect{|name| name.capitalize}.join(' ')
   end
 
+  # properly capitlize the last name
   def last_name
     self[:last_name].split(' ').collect{|name| name.capitalize}.join(' ')
   end
