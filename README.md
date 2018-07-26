@@ -2,7 +2,35 @@
 
 ## A tool for creating learning tracks with a focus on reviewing completed quizes until you actually remember it
 
-This is a tool for creating quizzes organized into chapters and tracks. they are designed to go along with a book
+This is a tool for creating quizzes organized into chapters and tracks. they are designed to go along with a text book.
+ 
+I've created an app called 'remember it' to help Students remember what they've learned. I'm now going to explain a little how it works and give a demo.  
+ 
+A school would use the app to create quizzes with multiple choice questions, organized into learning tracks and chapters.
+ 
+The idea is that each quiz would also include a few questions From previous quizzes. That way you don't get to the end of the year and half the curriculum is forgotten.
+
+
+## Installation
+
+Download and install
+
+    git clone https://github.com/arye-dov-eidelman/remember-it.git
+    cd remember-it
+    bundle install
+
+Setup the database
+
+    rake db:schema:load
+
+Start the server
+
+    rackup config.ru
+
+## Usage
+
+navigate to domain/curriculum to create and manage your learning tracks
+navigate to domain/learn to find learning tracks
 
 ## Features
 
@@ -31,29 +59,6 @@ This is a tool for creating quizzes organized into chapters and tracks. they are
   - [ ] Question difficulty rating based on real data on how many students get it right or wrong (ensure this isn't deleted on a curriculum version upgrade)
   - [ ] Competitions class and school (use difficulty rating to start off easy and get harder and harder)
   - [ ] Customization options
-
-## Installation
-
-Download and install
-
-    git clone https://github.com/arye-dov-eidelman/remember-it.git
-    cd remember-it
-    bundle install
-
-Setup the database
-
-    rake db:schema:load
-
-Start the server
-
-    rackup config.ru
-
-## Usage
-
-navigate to domain/curriculum to create and manage your learning tracks
-navigate to domain/learn to find learning tracks
-
-## Development
 
 ## Contributing
 
