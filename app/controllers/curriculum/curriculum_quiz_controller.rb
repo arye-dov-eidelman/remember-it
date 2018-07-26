@@ -1,45 +1,22 @@
 class CurriculumQuizController < CurriculumController
 
+  # quiz edit page
   get "/quizzes/:quiz_id/edit" do
     (return 404) if !(@quiz = Quiz.find_by(id: params[:quiz_id]))
     (return 403) if @quiz.owner != @user
     erb :'quizzes/edit'
   end
   
+  # update the quizz, it's questions and answers 
   patch '/quizzes/:quiz_id' do
     (return 404) if !(quiz = Quiz.find_by(id: params[:quiz_id]))
     (return 403) if quiz.owner != @user
 
-    if params[:quesions]
-      # params[:quesions].each do |question_id, question_values|
-      #   if !question_values[:title].strip.empty?
-      #     question = Question.find_by(id: question_id)
-      #     question.title = question_values[:title].strip
-      
-      #     # if question_values[:answers]
-      #     #   question_values[:answers].each do |answer_id, answer_values|
-      #     #     if !answer_values[:content].strip.empty?
-      #     #       answer = Answer.find_by(id: answer_id)
-      #     #       answer.content = answer_values[:content].strip
-      #     #       answer.is_correct = answer_values[:is_correct].to_b
-      #     #       answer.save
-      #     #     else
-      #     #       answer = Answer.find_by(id: answer_id)
-      #     #       answer.destroy
-      #     #     end
-      #     #   end
-      #     # end
-      
-      #     question.save
-      #   else
-      #     question = Question.find_by(id: question_id)
-      #     question.destroy
-      #   end
-      # end
-    end
-    
     quiz_params = params[:quiz]
 
+    # in this transaction all questions and answers in this quiz will be deleted 
+    # and recreated from scratch (with new id's), to simplify the logic.
+    # if you dont want a headache, do yourself a favor and skip to the end of this block! 😉
     Quiz.transaction do
       quiz.questions.destroy_all
       if quiz_params[:questions]
@@ -50,7 +27,7 @@ class CurriculumQuizController < CurriculumController
               question.answers << question_params[:answers].collect do |answer_param|
                 if !answer_param.strip.empty?
                   answer = Answer.create(content: answer_param)
-                  answer.is_correct = answer_param[:is_correct] # answer[:is_correct].to_b ?? figure out if it's corect or not!! ################################
+                  answer.is_correct = answer_param[:is_correct] # answer[:is_correct].to_b ?? figure out if it's the correct answer or not!! ################################
                   answer.save!
                   answer
                 end

@@ -1,14 +1,16 @@
 class CurriculumTrackController < CurriculumController
 
+  # new track page
   get "/tracks/new" do
     erb :'tracks/new'
   end
 
+  # create a new track and optionally create chapters as well
   post '/tracks' do
-    binding.pry
     track = Track.new(params[:track])
     track.owner = @user
     
+    # create any submitted chapters
     track.chapters << params[:chapters].collect do |chapter_params|
       Chapter.create(chapter_params) if !chapter_params[:title].strip.empty?
     end.compact
@@ -22,16 +24,19 @@ class CurriculumTrackController < CurriculumController
     end
   end
 
+  # track edit page
   get "/tracks/:track_id/edit" do
     (return 404) if !(@track = Track.find_by(id: params[:track_id]))
     (return 403) if @track.owner != @user
     erb :'tracks/edit'
   end
   
+  # update the track
   patch '/tracks/:track_id' do
     (return 404) if !(track = Track.find_by(id: params[:track_id]))
     (return 403) if track.owner != @user
 
+    # edit chapter titles
     if params[:chapters]
       params[:chapters].each do |chapter_id, chapter_values|
         if !chapter_values[:title].strip.empty?
@@ -45,12 +50,14 @@ class CurriculumTrackController < CurriculumController
       end
     end
 
+    # create new chapters
     if params[:new_chapters]
       track.chapters << params[:new_chapters].collect do |chapter_params|
         Chapter.create(chapter_params) if !chapter_params[:title].strip.empty?
       end.compact
     end
 
+    # update the track
     if track.update(params[:track])
       create_message("We've successfully updated the learning track \"#{track.title}\"", "successful")
       redirect "tracks/#{track.id}/edit"
