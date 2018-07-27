@@ -13,7 +13,6 @@ class ApplicationController < Sinatra::Base
   helpers Messageable
 
   before do
-    # binding.pry
     # if the user is logged in get their info and set @logged_in to true
     if session[:user_id]
       if user = User.find_by(id: session[:user_id])
@@ -21,15 +20,21 @@ class ApplicationController < Sinatra::Base
         @logged_in = true
       end
     end
-
-    # if request.get?
-    # elsif request.post?
-    # elsif request.patch?
-    # elsif request.delete?
-    # end
   end
 
+  # home page
   get "/" do
     erb :index
   end
+
+  # 404 page
+  error 404 do
+    erb :'404'
+  end
+
+  # 403 page
+  error 403 do
+    erb :'403'
+  end
+
 end

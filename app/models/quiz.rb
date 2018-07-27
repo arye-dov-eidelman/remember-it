@@ -7,7 +7,6 @@ class Quiz < ActiveRecord::Base
 
   has_many :questions
 
-
   after_commit :update_successful
   after_rollback :update_failed
  
