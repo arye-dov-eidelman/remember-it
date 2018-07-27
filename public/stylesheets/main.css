@@ -1,115 +1,210 @@
-@media screen {
-  /* --- Reset Styles --- */
+
+/* ##### general (start) ##### */
+
   * {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box;
   }
 
-  html, body {
-    height: 100%;
-    width: 100%;
-  }
-
-  /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
-    color: #333;
-    font-family: Sans-Serif;
-    line-height: 18px;
+    margin: 0 auto;
+    /* min-width: 360px; */
+    max-width: 1024px;
+    background-color: #bbb;
+  }
+  main {
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 50%;
+    overflow: auto;
+    padding: 8px;
   }
 
-  .wrapper {
-    background: #fff;
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
-    margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
-    width: 85%;
+  header, footer{
+    font-family: 'Indie Flower', cursive;
+    text-shadow: 0px 0px 20px black;
+    color: white;
+    padding: 20px;
+    margin: 0;
+    background-color: #444;
   }
 
-  h1 {
-    font-size: 36px;
-    line-height: 54px;
+  header * {
+    display: inline-block;
   }
 
-  h2 {
-    border-bottom: 2px solid #ccc;
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 16px;
+  header h1, header h3{
+    margin: 0 50px 0 0;
   }
 
-  h3 {
-    font-size: 18px;
-    line-height: 36px;
+  /* form .card input, form .card textarea{
+    border: none;
+  } */
+  
+  input, textarea {
+    background: #bbb;
+    border: none;
+    padding: 2px;
+    margin:2px;
+  }
+  
+  
+  textarea {
+    width: 100%;
+    padding: 5px;
+  }
+  /* set all links in the header footer and buttons to tomato (#ff6347) */
+  header a:link, header a:visited, footer a:link, footer a:visited, .button, .button-breakable {
+    color: #ff6347;
+    text-decoration: none;
   }
 
-  p {
-    margin-bottom: 18px;
+/* ##### general (end) ##### */
+
+/* ##### class level styles (start) ##### */
+
+  .card {
+    padding: 15px;
+    margin: 5px 0;
+    color: white;
+    background-color: #666;
+    /* border-bottom: 1px solid #444;
+    border-top: 1px solid #444; */
   }
 
-  .main {
-    overflow: hidden;
+  .breakable{
+    display: inline-block;
+  }
+  
+  .button{
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 15px;
+    margin: 5px 0;
+    text-shadow: 0px 0px 20px black;
+    background-color: #444;
+    text-align: center;
   }
 
-  .content {
-    float: left;
-    width: 60%; /* 480px / 800px */
+  .button-breakable{
+    display: inline-block;
+    border: none;
+    
+    padding: 6px;
+    margin: 2.5px;
+    text-shadow: 0px 0px 20px black;
+    background-color: #444;
   }
 
-  .sidebar {
-    background: #eee;
-    border: 1px solid #ccc;
-    float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
-    width: 30%; /* 240px / 800px */
+  /* ##### .brand-quote (start) ##### */
+
+    .brand-quote-line1 {
+      font-family: 'Indie Flower', cursive;
+      font-size: 0.7576em;
+      text-transform: capitalize;
+    }
+
+    .brand-quote-line2 {
+      font-family: 'Indie Flower', cursive;
+      font-size: 1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .brand-quote{
+      width: fit-content;
+      font-size: 2em;
+      background: lightgray;
+      padding: 10px;
+      margin: 50px;
+    }
+
+  /* ##### .brand-quote (end) ##### */
+
+  /* ##### messages (start) ##### */
+
+    .message {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding: 10px 25px;
+      margin: 0 auto;
+      width: fit-content;
+
+      text-shadow: 0px 0px 20px white;
+      box-shadow: 0 0 50px 10px black;
+      background-color: lightgray;
+
+      animation:message-animation 2s 1;
+      animation-fill-mode: forwards;
+      animation-delay: 8s;
+    }
+
+    @keyframes message-animation{
+      from {
+        opacity :1;
+        top: 0;
+      }
+      to {
+        opacity :0;
+        top: -150px;
+      }
+    }
+
+  /* ##### messages (end) ##### */
+
+
+  .chapter-title {
+    width: 300px;
   }
 
-  .sidebar ul {
-    font-size: 14px;
-  }
-
-  .branding {
-    clear: both;
-  }
-
-  footer.branding {
-    border-top: 2px solid #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .wrapper {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    width: auto;
-  }
-
-  .content, .sidebar {
-    float: none;
+  .question-title {
+    display: block;
+    max-width: 1024px;
     width: 100%;
   }
 
-  .sidebar {
-    background: transparent;
-    border: none;
-    border-top: 2px solid #ccc;
-    padding: 0;
+  .answer {
+    display: block;
+    min-width: 320px;
+    max-width: 1024px;
+    width: 95%;
+    margin-left: 5%;
   }
 
-  h1 {
-    font-size: 24px;
-    line-height: 36px;
+  .delete-if-empty:placeholder-shown {
+    background-color: red;
   }
 
-  h2 {
-    font-size: 18px;
-    line-height: 24px;
+  .delete-if-empty::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
   }
-}
+
+  /* Internet Explorer 10-11 */ .delete-if-empty:-ms-input-placeholder,
+  /* Microsoft Edge */ .delete-if-empty::-ms-input-placeholder {
+    color: white;
+  }
+
+  .danger{
+    color: red;
+    text-shadow: 0px 0px 20px red;
+    letter-spacing: 1px;
+  }
+
+  .x-large-message {
+    font-size: 14vmin;
+    text-align: center;
+
+  }
+
+  .large-message {
+    font-size: 4vmin;
+    text-align: center;
+  }
+
+/* ##### class level styles (end) ##### */
+
+/* ##### id level styles (start) ##### */
+/* ##### id level styles (end) ##### */

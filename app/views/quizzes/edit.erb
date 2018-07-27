@@ -1,0 +1,73 @@
+<h2>Quiz Editer</h2>
+<form action="/quizzes/<%= @quiz.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+
+  <div class="card">
+    <label>Title: <br>
+      <textarea name="quiz[title]" id="quiz_title" cols="30" rows="3" required><%= @quiz.title %></textarea>
+    </label>
+  </div>
+
+  <!-- questions that are already saved -->
+  <% if !@quiz.questions.empty? %>
+    <% @quiz.questions.each.with_index(1) do |question, question_number| %>
+
+      <div class="card">
+        <label><span class="breakable">Question <%= question_number %>.</span>
+          <input  type="text" class="question-title" name="quiz[questions][][title]"
+                  value="<%= question.title %>" placeholder="what is the.. why is it that... when did... in what way... ">
+        </label>
+
+        <!-- answers that are already saved -->
+        <% if !question.answers.empty? %>
+          <% question.answers.each.with_index(1) do |answer, answer_number| %>
+
+              <label>
+                <input  type="text" class="answer" name="quiz[questions][]answers[]"
+                        value="<%= answer.content %>" placeholder="Answer <%= answer_number %>">
+              </label>
+
+          <% end %>
+        <% end %>
+
+        <!-- add new answers here -->
+        <% 4.times.with_index(question.answers.length + 1) do |bad_count, answer_count| %>
+
+            <label>
+              <input  type="text" class="answer" name="quiz[questions][]answers[]"
+                      placeholder="Answer <%= answer_count %>">
+            </label>
+
+        <% end %>
+
+      </div>
+
+    <% end %>
+  <% end %>
+
+  <!-- add new questions here -->
+  <% 8.times.with_index(@quiz.questions.length + 1) do |bad_count, question_count| %>
+
+    <div class="card">
+      <label><span class="breakable">Question <%= question_count %>.</span>
+        <input  type="text" class="question-title" name="quiz[questions][][title]"
+                placeholder="what is the.. why is it that... when did... in what way... ">
+      </label>
+
+      <!-- answers here -->
+      <% 4.times.with_index(1) do |bad_count, answer_count| %>
+
+          <label>
+            <input  type="text" class="answer" name="quiz[questions][]answers[]"
+                    placeholder="Answer <%= answer_count %>">
+          </label>
+
+      <% end %>
+
+    </div>
+
+  <% end %>
+    
+
+  <input type="submit" class="button" value="Save all changes">
+</form>
