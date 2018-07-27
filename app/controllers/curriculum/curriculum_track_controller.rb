@@ -26,14 +26,14 @@ class CurriculumTrackController < CurriculumController
 
   # track edit page
   get "/tracks/:track_id/edit" do
-    (return 404) if !(@track = Track.find_by(id: params[:track_id]))
+    (redirect 404) if !(@track = Track.find_by(id: params[:track_id]))
     (return 403) if @track.owner != @user
     erb :'tracks/edit'
   end
   
   # update the track
   patch '/tracks/:track_id' do
-    (return 404) if !(track = Track.find_by(id: params[:track_id]))
+    (redirect 404) if !(track = Track.find_by(id: params[:track_id]))
     (return 403) if track.owner != @user
 
     # edit chapter titles

@@ -77,6 +77,25 @@ class AccountController < ApplicationController
     end
     erb :'/account/settings'
   end
+
+  # delete account page
+  get '/account/delete' do
+    erb :'/account/delete'
+  end
+
+  delete '/account' do
+    if @user.authenticate(params[:password])
+      if @user.destroy
+        session.clear
+        create_message("You've account was deleted!", "successful")
+        redirect '/'
+      else
+        create_message("We couldn't delete your account", "failure")
+      end
+    else
+      create_message("Thats not your password, try again.", "failure")
+    end
+  end
   
 
   ### redirects ###

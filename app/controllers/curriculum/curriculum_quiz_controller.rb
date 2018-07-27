@@ -2,14 +2,14 @@ class CurriculumQuizController < CurriculumController
 
   # quiz edit page
   get "/quizzes/:quiz_id/edit" do
-    (return 404) if !(@quiz = Quiz.find_by(id: params[:quiz_id]))
+    (redirect 404) if !(@quiz = Quiz.find_by(id: params[:quiz_id]))
     (return 403) if @quiz.owner != @user
     erb :'quizzes/edit'
   end
   
   # update the quizz, it's questions and answers 
   patch '/quizzes/:quiz_id' do
-    (return 404) if !(quiz = Quiz.find_by(id: params[:quiz_id]))
+    (redirect 404) if !(quiz = Quiz.find_by(id: params[:quiz_id]))
     (return 403) if quiz.owner != @user
 
     quiz_params = params[:quiz]

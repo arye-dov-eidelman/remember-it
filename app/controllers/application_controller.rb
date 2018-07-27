@@ -26,4 +26,15 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :index
   end
+
+  # 404 page
+  error 404 do
+    erb :'404'
+  end
+
+  # 403 page
+  error 403 do
+    erb :'403'
+  end
+
 end
