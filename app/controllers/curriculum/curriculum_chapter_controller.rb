@@ -3,7 +3,7 @@ class CurriculumChapterController < CurriculumController
   # the chapter edit page
   get "/chapters/:chapter_id/edit" do
     # return 404 for non existent chapters
-    (return 404) if !(@chapter = Chapter.find_by(id: params[:chapter_id]))
+    (redirect 404) if !(@chapter = Chapter.find_by(id: params[:chapter_id]))
 
     # return 403 for chapters that dont belong to the curent user
     (return 403) if @chapter.owner != @user
@@ -14,7 +14,7 @@ class CurriculumChapterController < CurriculumController
   # delete and/or create quizzes.
   # edit quizz titles
   patch '/chapters/:chapter_id' do
-    (return 404) if !(chapter = Chapter.find_by(id: params[:chapter_id]))
+    (redirect 404) if !(chapter = Chapter.find_by(id: params[:chapter_id]))
     (return 403) if chapter.owner != @user
 
     if params[:quizzes]
